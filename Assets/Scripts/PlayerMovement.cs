@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,15 +23,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown("space")){
-            rb.AddForce(transform.up * JumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
 
         if(Input.GetKey("d")){
-            rb.AddForce(transform.right * speed);
+            rb.AddForce(Vector2.right * speed);
         }
 
         if(Input.GetKey("a")){
-            rb.AddForce(transform.right * -speed);
+            rb.AddForce(Vector2.right * -speed);
 
         }
 
@@ -40,9 +41,21 @@ public class PlayerMovement : MonoBehaviour
         else if(rb.velocity.x <= -maxspeed){
             rb.velocity = new Vector2(-maxspeed, rb.velocity.y);
         }
+        private bool isGrounded(){
+            Vector2 center = transform.position - trnsform.up * 0.5f;
+            float radius = 3f;
 
+            if(physics2D.Overlap)
+        }
         
 
 
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.CompareTag("Teleporter")){
+            SceneManager.LoadScene("Level2");
+        }
     }
 }
