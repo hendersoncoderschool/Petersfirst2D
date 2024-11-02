@@ -41,12 +41,14 @@ public class PlayerMovement : MonoBehaviour
         else if(rb.velocity.x <= -maxspeed){
             rb.velocity = new Vector2(-maxspeed, rb.velocity.y);
         }
-        private bool isGrounded(){
-            Vector2 center = transform.position - trnsform.up * 0.5f;
+        /*
+        bool isGrounded(){
+            Vector2 center = transform.position - transform.up * 0.5f;
             float radius = 3f;
 
-            if(physics2D.Overlap)
+            if(physics2D.Overlap);
         }
+        */
         
 
 
